@@ -1,0 +1,164 @@
+:root {
+    --glow-color-1: #00ff6e;
+    --glow-color-2: #00b7ff;
+    --glow-color-3: #2550ffaa;
+    --glow-color-4: #ff9500;
+    --glow-color-5: #ffd500;
+    --bg-color: #0a0a0a;
+    --border-radius: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    padding: 20px;
+}
+
+.camera-module {
+    position: relative;
+    width: 680px;
+    height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ambient-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    background: 
+        radial-gradient(circle at 0% 0%, var(--glow-color-1), transparent 50%),
+        radial-gradient(circle at 100% 0%, var(--glow-color-2), transparent 50%),
+        radial-gradient(circle at 0% 100%, var(--glow-color-3), transparent 50%),
+        radial-gradient(circle at 100% 100%, var(--glow-color-4), transparent 50%);
+    filter: blur(20px);
+    opacity: 0.5;
+    animation: ambientMove 15s ease-in-out infinite;
+    z-index: 1;
+}
+
+.reactive-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    background: radial-gradient(circle at center, var(--glow-color-5), transparent 70%);
+    filter: blur(20px);
+    opacity: 0;
+    transition: all 0.1s ease-out;
+    z-index: 2;
+}
+
+.video-container {
+    position: relative;
+    width: 640px;
+    height: 480px;
+    background: #000;
+    border-radius: calc(var(--border-radius) - 5px);
+    overflow: hidden;
+    z-index: 3;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#videoElement {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.analysis-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
+
+.stats {
+    color: #fff;
+    font-family: 'SF Mono', monospace;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 200px;
+}
+
+.status {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff3b3b;
+    transition: background-color 0.3s ease;
+}
+
+.status.connected .status-dot {
+    background: #00ff95;
+}
+
+@keyframes ambientMove {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.1) rotate(3deg);
+    }
+    50% {
+        transform: scale(1) rotate(-3deg);
+    }
+    75% {
+        transform: scale(1.1) rotate(1deg);
+    }
+}

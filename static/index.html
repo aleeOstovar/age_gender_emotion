@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحلیل چهره هوش مصنوعی</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* RTL specific styles */
+        body[dir="rtl"] {
+            font-family: 'Iranian Sans', 'Vazir', Arial, sans-serif;
+        }
+        
+        body[dir="rtl"] .stats {
+            text-align: right;
+        }
+        
+        body[dir="rtl"] .analysis-overlay {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <div class="app-container">
+        <div class="camera-module">
+            <div class="ambient-glow"></div>
+            <div class="reactive-glow"></div>
+            <div class="video-container">
+                <video id="videoElement" autoplay playsinline muted></video>
+                <canvas id="overlay"></canvas>
+                <div class="analysis-overlay">
+                    <div class="stats" id="stats"></div>
+                    <div class="status" id="status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">در حال راه‌اندازی...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

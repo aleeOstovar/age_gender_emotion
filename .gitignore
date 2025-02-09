@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.venv
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+*.sqlite
+
+# Python dependency files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.*
+*.secret
+
+# FastAPI specific
+instance/
+*.pid
+*.sock
+
+# Compiled Python files
+*.so
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Machine learning and model files
+*.h5
+*.pt
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
